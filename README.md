@@ -2,7 +2,7 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
-- [vm-provisioning-plugin-for-slurm implements dynamic VM orchestration for virtualized HPC frameworks](#Dynamic VM orchestration for virtualized HPC frameworks)
+- [vm-provisioning-plugin-for-slurm implements dynamic VM orchestration for virtualized HPC](#Dynamic VM orchestration for virtualized HPC)
   - [Introduction](#introduction)
   - [Preliminaries](#preliminaries)
     - [Requirements](#requirements)
@@ -19,7 +19,7 @@
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 # Dynamic VM orchestration for virtualized HPC frameworks
 ## Introduction
-vm-provisioning-plugin-for-slurm (also called Multiverse) implements dynamic VM orchestration for virtualized HPC frameworks. In other words it a VM per job model which spawns individual VMs on demand for evey incoming job in a HPC SLURM cluster.
+vm-provisioning-plugin-for-slurm (also called Multiverse) implements dynamic VM orchestration for virtualized HPC. In other words it a VM per job model which spawns individual VMs on demand for evey incoming job in a HPC SLURM cluster.
 
 
 ## **Preliminaries** 
@@ -30,7 +30,7 @@ vm-provisioning-plugin-for-slurm (also called Multiverse) implements dynamic VM 
    * Instruction are provided for **Centos-7**. Other linux operating systems are supported as well. But slurm installation would differ accordingly. 
 2. vSphere **>=6.5**
 3. Python version 3.6
-2. Install vHPC\_toolkit as per instructions from [vhpc\_toolkit](https://gitlab.eng.vmware.com/hpc/vhpc_cfg/tree/master)
+2. Install vHPC\_toolkit as per instructions from [vhpc\_toolkit](https://github.com/vmware/vhpc-toolkit)
 2. Download slurm  [slurm](https://gitlab.eng.vmware.com/jgunasekaran/multiverse/blob/master/slurm_source). This framework is developed with Slurm 19.05. 
     * you can choose to download the full source of Slurm from [slurm](https://www.schedmd.com/downloads.php). Compile it from scratch and then install.   
     * Alternatively you can use our provided rpm files to directly install slurm from install script. More details are provided in [slurm_install](https://gitlab.eng.vmware.com/jgunasekaran/multiverse/blob/master/slurm_install/)
