@@ -1,22 +1,4 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
-- [vm-provisioning-plugin-for-slurm implements dynamic VM orchestration for virtualized HPC](#Dynamic VM orchestration for virtualized HPC)
-  - [Introduction](#introduction)
-  - [Preliminaries](#preliminaries)
-    - [Requirements](#requirements)
-    - [Install and setup](#install-and-setup)
-    - [Prepare the VM template](#prepare-the-vm-template)
-    
-  - [Using The Framework](#using-the-tool)
-    - [VM/Cluster configuration](#prepare-the-vm-template)
-    - [Prepare the slurm configuration template](#slurm-configuration-template)
-    - [Admission Control and Load Balancing](#admission-control)
-    - [Logging](#logging)
-
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 # Dynamic VM orchestration for virtualized HPC frameworks
 ## Introduction
 vm-provisioning-plugin-for-slurm (also called Multiverse) implements dynamic VM orchestration for virtualized HPC. In other words it a VM per job model which spawns individual VMs on demand for evey incoming job in a HPC SLURM cluster.
