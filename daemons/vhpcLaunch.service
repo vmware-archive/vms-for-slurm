@@ -1,0 +1,11 @@
+[Unit]
+Description=My daemon
+
+[Service]
+ExecStart=/bin/bash /usr/bin/vhpcLaunch.sh 5 full
+ExecReload=/bin/kill -HUP $MAINPID
+PIDFile=/var/run/vhpc.pid
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target 

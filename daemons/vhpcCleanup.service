@@ -1,0 +1,9 @@
+[Unit]
+Description=My daemon
+
+[Service]
+ExecStart=/bin/bash /usr/bin/vhpcCleanup.sh 5
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target 
