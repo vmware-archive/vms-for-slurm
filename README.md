@@ -2,7 +2,7 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
-- [vm-provisioning-plugin-for-slurm is Dynamic VM orchestration for virtualized HPC frameworks](#Dynamic VM orchestration for virtualized HPC frameworks)
+- [vm-provisioning-plugin-for-slurm implements dynamic VM orchestration for virtualized HPC frameworks](#Dynamic VM orchestration for virtualized HPC frameworks)
   - [Introduction](#introduction)
   - [Preliminaries](#preliminaries)
     - [Requirements](#requirements)
