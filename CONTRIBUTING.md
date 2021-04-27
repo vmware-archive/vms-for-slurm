@@ -2,7 +2,7 @@
 
 # Contributing to vm-provisioning-plugin-for-slurm
 
-The vm-provisioning-plugin-for-slurm project team welcomes contributions from the community. 
+The vm-provisioning-plugin-for-slurm project team welcomes contributions from the community. Before you start working with vm-provisioning-plugin-for-slurm, please read our [Developer Certificate of Origin](https://cla.vmware.com/dco). All contributions to this repository must be signed as described on that page. Your signature certifies that you wrote the patch or have the right to pass it on as an open-source patch.
 
 ## Contribution Flow
 
