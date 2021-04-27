@@ -1,11 +1,12 @@
 # vm-provisioning-plugin-for-slurm
 # Copyright 2019-2021 VMware, Inc.
+# SPDX-License-Identifier: BSD-2
 
-# This product is licensed to you under the BSD-2 license (the "License"). 
-# You may not use this product except in compliance with the BSD-2 License.  
+# This product is licensed to you under the BSD-2 license (the "License").
+# You may not use this product except in compliance with the BSD-2 License.
 
-# This product may include a number of subcomponents with separate copyright 
-# notices and license terms. Your use of these subcomponents is subject to 
+# This product may include a number of subcomponents with separate copyright
+# notices and license terms. Your use of these subcomponents is subject to
 # the terms and conditions of the subcomponent's license, as noted in the LICENSE file.
 
 #####LOGGING##########
@@ -42,7 +43,7 @@ function busy {
 ######## if all hosts are busy and cannot accomoate a new VM, then requeue the job ########
 function nohost {
 	$jobid=$2
-		$jobname = $1 
+		$jobname = $1
 		echo $(sed -i "/$jobname/d" /var/spool/slurmctld/spawning_jobs)
 		echo "deleted spawning jobs and unlocking"
 		echo "no hosts available. requeue the job"
@@ -127,13 +128,13 @@ do
     #echo "Acquiring main VM lock $$"
     exec 200>$lock;
     #echo "doing flock"
-    flock --nb 200 || busy $1 
+    flock --nb 200 || busy $1
     #echo "looking up spawning VMs"
 
 ####################### For all cloned/spawned VMs, restart the controller and call function to run job  #########
     jobs=$(cat /var/spool/slurmctld/spawned_jobs | wc -l)
     #echo $slaves >> output.txt
-	if [ $jobs -ge 1 ] 
+	if [ $jobs -ge 1 ]
 	then
 	echo "/////// restarting controller for all jobs $jobs /////////"
 	systemctl restart slurmctld
@@ -146,8 +147,8 @@ do
 	done < /var/spool/slurmctld/spawned_jobs
     fi
 
-####################### 
-# Looking up if VM spawning is complete for all new VMS in progress  
+#######################
+# Looking up if VM spawning is complete for all new VMS in progress
 # 1 indicated no currently available host
 # 2 indicates if clone failed for some unknown reason
 # 3 indicated if job requirements can never be satisifed by any host
@@ -156,9 +157,9 @@ do
 ########################
     jobs=$(cat /var/spool/slurmctld/spawning_jobs | wc -l)
     #echo $slaves >> output.txt
-	if [ $jobs -ge 1 ] 
+	if [ $jobs -ge 1 ]
 	then
-	
+
 	while read job
 	do
 	jobname=$(echo $job | awk '{print $1}')
@@ -166,7 +167,7 @@ do
     #echo "**********SPAWNING acquiring VM file lock:"
 	lock=/var/spool/slurmctld/lock/$jobid
     isEmpty=$(cat $lock)
-	if [ -z "$isEmpty" ]  
+	if [ -z "$isEmpty" ]
 	then
 	    continue
 	elif [ $isEmpty -eq 1 ]
@@ -183,7 +184,7 @@ do
 	    ip_fix $jobid $jobname
 	elif [ $isEmpty -eq 0 ]
 	then
-	    addSpawned $jobid $jobname 
+	    addSpawned $jobid $jobname
 	#run_job $jobname $jobid
 	else
 	    echo "unknown error. cannot spawn VM for job"
@@ -191,15 +192,15 @@ do
 	done < /var/spool/slurmctld/spawning_jobs
 	fi
 
-####################### 
-#jobids are added to queued_jobs by using sched plugin 
+#######################
+#jobids are added to queued_jobs by using sched plugin
 #looks up all jobs in queued_jobs and initiates VM launch script
 ########################
 
 #echo "looking up queued VMs"
 jobs=$(cat /var/spool/slurmctld/queued_jobs | wc -l)
 #echo $slaves >> output.txt
-	if [ $jobs -ge 1 ] 
+	if [ $jobs -ge 1 ]
 	then
 	while read job
 	do
@@ -238,7 +239,7 @@ jobs=$(cat /var/spool/slurmctld/queued_jobs | wc -l)
 	#echo "acquired pending lock"
     jobs=$(cat /var/spool/slurmctld/pending_jobs | wc -l)
     #echo $slaves >> output.txt
-	if [ $jobs -ge 1 ] 
+	if [ $jobs -ge 1 ]
 	then
 	while read job
 	do

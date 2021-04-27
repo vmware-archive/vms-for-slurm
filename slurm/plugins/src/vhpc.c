@@ -1,6 +1,7 @@
 /*****************************************************************************\
  * vm-provisioning-plugin-for-slurm
  * Copyright 2019-2021 VMware, Inc.
+ * SPDX-License-Identifier: BSD-2
 
  * This product is licensed to you under the BSD-2 license (the "License"). 
  * You may not use this product except in compliance with the BSD-2 License.  

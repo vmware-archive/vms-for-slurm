@@ -1,11 +1,12 @@
 # vm-provisioning-plugin-for-slurm
 # Copyright 2019-2021 VMware, Inc.
+# SPDX-License-Identifier: BSD-2
 
-# This product is licensed to you under the BSD-2 license (the "License"). 
-# You may not use this product except in compliance with the BSD-2 License.  
+# This product is licensed to you under the BSD-2 license (the "License").
+# You may not use this product except in compliance with the BSD-2 License.
 
-# This product may include a number of subcomponents with separate copyright 
-# notices and license terms. Your use of these subcomponents is subject to 
+# This product may include a number of subcomponents with separate copyright
+# notices and license terms. Your use of these subcomponents is subject to
 # the terms and conditions of the subcomponent's license, as noted in the LICENSE file.
 # coding=utf-8
 
@@ -676,7 +677,7 @@ class GetVM(object):
         """
 
         return self.vm_obj.config.cpuAllocation.shares.shares
-    
+
     def memory_shares(self):
         """
 
@@ -807,16 +808,16 @@ class GetVM(object):
             ):
                 network_obj = dev
         return network_obj
-    
+
     def device_objs_all(self):
         """
-        
+
         Args:
             None
-            
+
         Returns:
         	a list of VM network objects [vim.Network]
-        
+
         """
         return self.vm_obj.config.hardware.device
 
@@ -1192,7 +1193,7 @@ class GetClone(GetObjects):
             self.logger.warning(
                 "No host and no resource pool specified and DRS is not enabled. "
                 "The same host of the template is used "
-            )   
+            )
         else:
             self.dest_host_obj = None
             self.logger.warning(

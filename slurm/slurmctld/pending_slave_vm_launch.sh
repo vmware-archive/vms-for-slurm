@@ -1,12 +1,13 @@
 # vm-provisioning-plugin-for-slurm
 # Copyright 2019-2021 VMware, Inc.
+# SPDX-License-Identifier: BSD-2
 
-# This product is licensed to you under the BSD-2 license (the "License"). 
-# You may not use this product except in compliance with the BSD-2 License.  
+# This product is licensed to you under the BSD-2 license (the "License").
+# You may not use this product except in compliance with the BSD-2 License.
 
-# This product may include a number of subcomponents with separate copyright 
-# notices and license terms. Your use of these subcomponents is subject to 
-# the terms and conditions of the subcomponent's license, as noted in the LICENSE file. 
+# This product may include a number of subcomponents with separate copyright
+# notices and license terms. Your use of these subcomponents is subject to
+# the terms and conditions of the subcomponent's license, as noted in the LICENSE file.
 
 LOG_LOCATION="/var/spool/vm_spawn_logs"
 exec >> $LOG_LOCATION/$2.log 2>&1
@@ -104,7 +105,7 @@ flock -x 10
 host=$(python /var/spool/adm_ctrl.py get_compatible_host $((CPU*nodes)) $((MEM*nodes))  | grep host | cut -d: -f 2)
 echo $host
 if echo $host | grep "no"
-then 
+then
 echo "all compatible host are busy"
 echo "writing 1 to $lock" >> output.txt
 echo "1" > $lock
@@ -151,10 +152,10 @@ echo "host: $host" >> cluster.conf
 
 echo "[_VMS_]" >> cluster.conf
 #echo -e "C_$jobid: BASE HOST-LIST" >> cluster.conf
-###check clone type or if static ip has to be used. 
+###check clone type or if static ip has to be used.
 #use NETWORK with staic ipaddress in that case
 
-if [ "$clone" == "instant" ] 
+if [ "$clone" == "instant" ]
 then
 if [ "$ip_type" == "static" ]
 then
@@ -195,7 +196,7 @@ export PYTHONPATH=/home/vhpc_cfg/
 #2 power-on and get ip
 #3 setup keyless ssh
 #4 change hostname
-#5 copy needed files for controller and slave slurm setup. 
+#5 copy needed files for controller and slave slurm setup.
 echo "cloning $nodes Slave VMs" >> output.txt
 for i in $(seq 1 $nodes)
 do
@@ -327,9 +328,9 @@ echo $(sshpass -f password.txt scp /var/spool/slurmctld/cleanup.sh root@$slave_i
 echo $(sshpass -f password.txt scp /var/spool/$jobname/job_config root@$slave_ip:.)
 echo $(sshpass -f password.txt scp /var/spool/slurmctld/slave_setup.sh root@$slave_ip:.)
 echo $(sshpass -f password.txt scp /var/spool/$jobname/slave_list root@$slave_ip:.)
-echo $($vhpc post --vm $slave --guest_password $password --script /var/spool/slurmctld/slave_setup.sh) 
+echo $($vhpc post --vm $slave --guest_password $password --script /var/spool/slurmctld/slave_setup.sh)
 sleep 5
-#echo $(sshpass -p "ca\$hc0w" ssh root@$slave_ip 'sh /root/slave_setup.sh') 
+#echo $(sshpass -p "ca\$hc0w" ssh root@$slave_ip 'sh /root/slave_setup.sh')
 done < slave_list
 echo "all slave nodes updated with new slurm.conf" >> output.txt
 
