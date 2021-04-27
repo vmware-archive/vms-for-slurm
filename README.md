@@ -97,3 +97,5 @@ The following information are logged by the different processes. All file names 
    * tail /var/log/vhpc.log
    * tail /var/log/vhpcCleanup.log
 
+## Need help?
+This project is not maintained by any VMware employee. If you have questions, please contact Jashwant Raj <jashwant.raj92@gmail.com>
