@@ -1,0 +1,60 @@
+MpiDefault=none
+#MpiParams=ports=#-# 
+ProctrackType=proctrack/pgid
+ReturnToService=1
+SlurmctldPidFile=/var/run/slurmctld.pid
+SlurmctldPort=6818 
+SlurmdPidFile=/var/run/slurmd.pid
+SlurmdPort=6820
+SlurmdSpoolDir=/var/spool/slurmd
+SlurmUser=slurm
+DebugFlags=NO_CONF_HASH
+#SlurmdUser=root 
+StateSaveLocation=/var/spool/slurmctld
+SwitchType=switch/none
+FederationParameters=fed_display 
+TaskPlugin=task/affinity
+# 
+#
+#JobSubmitPlugins=lua
+#JobModifyPlugins=lua
+ 
+# TIMERS 
+#KillWait=30 
+#MinJobAge=300 
+#SlurmctldTimeout=400 
+#SlurmdTimeout=300 
+#InactiveLimit=4000
+#BatchStartTimeout=4000
+MessageTimeout=4000
+# 
+# 
+# SCHEDULING 
+FastSchedule=1
+#hold plugin is used for the entire framework to hold all incoming jobs
+SchedulerType=sched/hold
+#this is the default resource select plugin in slurm.
+SelectType=select/linear
+SchedulerParameters=max_rpc_count=10
+#SelectTypeParameters=CR_Core
+# 
+# 
+# LOGGING AND ACCOUNTING
+AccountingStorageHost=master
+#AccountingStorageAddr=192.168.232.21
+AccountingStoragePort=6819
+AccountingStorageType=accounting_storage/slurmdbd
+JobCompType=jobcomp/filetxt
+JobCompLoc=/var/spool/slurmctld/jobs.txt
+
+#JobAcctGatherFrequency=30 
+#JobAcctGatherType=jobacct_gather/slurmdbd
+#SlurmctldDebug=info 
+SlurmctldLogFile=/var/log/slurmctld.log
+#SlurmdDebug=info 
+SlurmdLogFile=/var/log/slurmd.log
+# 
+# 
+#Partition configuration
+
+#Compute nodes
