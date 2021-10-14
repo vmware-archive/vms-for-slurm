@@ -60,7 +60,6 @@ Alternatively, you can use the installation script
    
 12. Copy the following files from [configuation](configuration/) folder to `/etc/slurm` in the controller node.
    * slurm.conf
-   * slurm\_slaves.conf
    * plugstack.conf
    
 13. Change the following parameters in `/etc/slurm/slurm.conf` file as per your 
@@ -72,15 +71,17 @@ cluster configuration
    * Parition name and nodenames
    * AccoutingStorageType (slurmdbd if you start slurmdbd service)
    
-14. Start the slurm controller daemon 
-   * `systemctl restart slurmctld` for controller node
-   * `systemctl restart slurmd` for slave/login node
+14. Start the Slurm controller daemon 
+   * `systemctl restart slurmctld` for controller nodes 
+   * `systemctl restart slurmd` for compute nodes
    
 15. Store the guest vm password in the file `/var/spool/password.txt` in controller node
  
 ### Prepare the VM template
-A template VM needs to spawmned and ready in advance to use this framework. Follow the same installation instrutions as given in [install slurm](https://www.slothparadise.com/how-to-install-slurm-on-centos-7-cluster/) specific to slave nodes.
-This VM will be used as template to clone all worker/slave slurm nodes. The framework supports all cloning types.
+A template VM needs to spawmned and ready in advance to use this framework. 
+Follow the same installation instrutions as given in [install slurm](https://www.slothparadise.com/how-to-install-slurm-on-centos-7-cluster/) 
+specific to compute nodes.
+This VM will be used as template to clone all worker nodes. The framework supports all cloning types.
 1. Instant clone:
    If using instant clone, configure the daemons in advance to use instant clone. Currently we support instant clone by having a template VM in frozen state on each host. This VM will be used as a template for cloning on a particular host.
    The template VM is named using the convention "<hostipaddress>.t". To follow instructions on how to setup a frozen VM for instant clone, refer [instant_clone](hhttps://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-F559CE9C-2D8F-4F69-A846-56A1F4FC8529.html)
@@ -91,12 +92,10 @@ This VM will be used as template to clone all worker/slave slurm nodes. The fram
 Both clone and cluster command of vhpc\_toolkit can be used for cloning new VMs. The default option right now is cluster command. You can change the standard parameters like datacenter, cluster, resource\_pool etc in the [cluster\_config](https://gitlab.eng.vmware.com/jgunasekaran/multiverse/blob/master/slurm/slurmctld/cluster_config) file which is used a template for every new VM configuration.
 For instant clone or if you want to use staticIP, the network configuration parameters also need to be defined in the cluster_config template. 
 
-### Prepare the slurm configuration template
+### Prepare the Slurm configuration template
 [slurm.conf.template](slurm/slurm.conf.template) file is used as a template 
 to generate a `slurm.conf` file on every worker node. You can modify the 
-parameters in this file as per your requirements. All slave nodes information
- is maintained in slurm_slaves.conf which should be present in all Slurm nodes. 
-This file is copied to every slave node during customization of the VM after cloning. 
+parameters in this file as per your requirements. 
 
 ### Admission Control and Load Balancing
 
