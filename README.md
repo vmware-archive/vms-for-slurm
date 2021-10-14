@@ -13,7 +13,7 @@ vm-provisioning-plugin-for-slurm (also called Multiverse) implements dynamic VM 
 2. vSphere **>=6.5**
 3. Python version 3.6
 2. Install vHPC\_toolkit as per instructions from [vhpc\_toolkit](https://github.com/vmware/vhpc-toolkit)
-2. Download slurm  [slurm](https://gitlab.eng.vmware.com/jgunasekaran/multiverse/blob/master/slurm_source). This framework is developed with Slurm 19.05. 
+2. Download slurm [slurm](https://gitlab.eng.vmware.com/jgunasekaran/multiverse/blob/master/slurm_source). This framework is developed with Slurm 19.05. 
     * you can choose to download the full source of Slurm from [slurm](https://www.schedmd.com/downloads.php). Compile it from scratch and then install.   
     * Alternatively you can use our provided rpm files to directly install slurm from install script. More details are provided in [slurm_install](https://gitlab.eng.vmware.com/jgunasekaran/multiverse/blob/master/slurm_install/)
 1. Install the following packages
